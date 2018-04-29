@@ -19,7 +19,7 @@ PFont HIRAGINO20;
 Neuron NEURON_0_0;
 Neuron NEURON_0_1;
 Neuron NEURON_1_0;
-float MAX = 5;
+float MAX = 20;
 float SCALE = 1;
 int COLOR_TRUE = 0xffCCFF90;
 int COLOR_FALSE = 0xffFF8A80;
@@ -147,8 +147,8 @@ public void keyPressed() {
       break;
     case 'c':
       if (MOUSE_MODE == 0) {
-        MOUSE_X_ASSIGN = "P00 undefined";
-        MOUSE_Y_ASSIGN = "P00 undefined";
+        MOUSE_X_ASSIGN = "P00 weight1";
+        MOUSE_Y_ASSIGN = "P00 weight2";
         MOUSE_MODE = 1;
       } else if (MOUSE_MODE == 1) {
         MOUSE_X_ASSIGN = "P00 bias";
@@ -171,8 +171,8 @@ public void keyPressed() {
         MOUSE_Y_ASSIGN = "P10 undefined";
         MOUSE_MODE = 6;
       } else if (MOUSE_MODE == 6) {
-        MOUSE_X_ASSIGN = "P00 weight1";
-        MOUSE_Y_ASSIGN = "P00 weight2";
+        MOUSE_X_ASSIGN = "P00 undefined";
+        MOUSE_Y_ASSIGN = "P00 undefined";
         MOUSE_MODE = 0;
       }
       break;
