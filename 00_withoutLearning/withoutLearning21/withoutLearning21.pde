@@ -45,9 +45,6 @@ void draw() {
 void drawNeuron(float x1, float x2, float size) {
   float p00 = NEURON_0_0.run(x1, x2);
   float p01 = NEURON_0_1.run(x1, x2);
-  // if (NEURON_0_0.run(x1, x2) > 0) { p00 = 1; }
-  // float p01 = 0;
-  // if (NEURON_0_1.run(x1, x2) > 0) { p01 = 1; }
   float p10 = NEURON_1_0.run(p00, p01);
   if (p10 > 0.5) {
     fill(COLOR_TRUE);
