@@ -2,6 +2,7 @@ PFont HIRAGINO10;
 PFont HIRAGINO20;
 Neuron NEURON_0_0;
 Neuron NEURON_0_1;
+Neuron NEURON_0_2;
 Neuron NEURON_1_0;
 float MAX = 10;
 float MIN = -10;
@@ -22,7 +23,8 @@ void setup() {
 
   NEURON_0_0 = new Neuron(new float[]{0.3, -2.2}, -1.4);
   NEURON_0_1 = new Neuron(new float[]{-0.4, -0.1}, 0.2);
-  NEURON_1_0 = new Neuron(new float[]{-0.2, 0.5}, -0.2);
+  NEURON_0_2 = new Neuron(new float[]{0.4, -0.1}, 0.2);
+  NEURON_1_0 = new Neuron(new float[]{-0.2, 0.5, 0.3}, -0.2);
 
   setupUi();
 }
@@ -54,7 +56,8 @@ void draw() {
 void drawNeuron(float[] x, float size) {
   float p00 = NEURON_0_0.run(x);
   float p01 = NEURON_0_1.run(x);
-  float p10 = NEURON_1_0.run(new float[]{p00, p01});
+  float p02 = NEURON_0_2.run(x);
+  float p10 = NEURON_1_0.run(new float[]{p00, p01, p02});
   if (p10 > 0.5) {
     fill(COLOR_TRUE);
   } else {
@@ -70,8 +73,12 @@ void updateParameters() {
   NEURON_0_1.weight(0, CP5.getController("P01_WEIGHT0").getValue());
   NEURON_0_1.weight(1, CP5.getController("P01_WEIGHT1").getValue());
   NEURON_0_1.bias(CP5.getController("P01_BIAS").getValue());
+  NEURON_0_2.weight(0, CP5.getController("P02_WEIGHT0").getValue());
+  NEURON_0_2.weight(1, CP5.getController("P02_WEIGHT1").getValue());
+  NEURON_0_2.bias(CP5.getController("P02_BIAS").getValue());
   NEURON_1_0.weight(0, CP5.getController("P10_WEIGHT0").getValue());
   NEURON_1_0.weight(1, CP5.getController("P10_WEIGHT1").getValue());
+  NEURON_1_0.weight(2, CP5.getController("P10_WEIGHT2").getValue());
   NEURON_1_0.bias(CP5.getController("P10_BIAS").getValue());
 }
 
