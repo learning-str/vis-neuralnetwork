@@ -3,7 +3,8 @@ PFont HIRAGINO20;
 Neuron NEURON_0_0;
 Neuron NEURON_0_1;
 Neuron NEURON_1_0;
-float MAX = 20;
+float MAX = 10;
+float MIN = -10;
 float SCALE = 1;
 color COLOR_TRUE = #CCFF90;
 color COLOR_FALSE = #FF8A80;
@@ -13,7 +14,7 @@ int MOUSE_MODE = 0;
 
 void setup() {
   size(1000, 1000, P2D);
-  SCALE = width / MAX;
+  SCALE = width / (MAX - MIN);
   background(255);
   smooth();
   HIRAGINO10 = loadFont("HiraginoSans-W0-10.vlw");
@@ -33,10 +34,10 @@ void update() {
 void draw() {
   update();
   pushMatrix(); {
-    translate(width / 2, height / 2);
+    translate(-MIN * SCALE, MAX * SCALE);
     for (int i = 0; i < 10000; i++) {
-      float x1 = random(-MAX, MAX);
-      float x2 = random(-MAX, MAX);
+      float x1 = random(MIN, MAX);
+      float x2 = random(MIN, MAX);
       noStroke();
       drawNeuron(x1, x2, 4);
     }
